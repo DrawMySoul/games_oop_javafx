@@ -41,4 +41,19 @@ public class BishopBlackTest {
 		BishopBlack bishopBlack = new BishopBlack(Cell.C1);
 		bishopBlack.way(Cell.G6);
 	}
+
+	@Test(expected = FigureNotFoundException.class)
+	public void findByFalse() throws OccupiedCellException, ImpossibleMoveException, FigureNotFoundException {
+		Cell falseCell = Cell.A2;
+		new Logic().move(falseCell, Cell.G5);
+	}
+
+	@Test(expected = OccupiedCellException.class)
+	public void wayIsBusy() throws OccupiedCellException, ImpossibleMoveException, FigureNotFoundException {
+		Logic logic = new Logic();
+		BishopBlack bishopBlack = new BishopBlack(Cell.C1);
+		logic.add(bishopBlack);
+		logic.add(new BishopBlack(Cell.F4));
+		logic.move(bishopBlack.position(), Cell.G5);
+	}
 }
