@@ -17,7 +17,7 @@ public class BishopBlackTest {
 	public void position() {
 		BishopBlack bishopBlack = new BishopBlack(Cell.A1);
 		Cell expected = Cell.A1;
-		assertThat(expected, is(bishopBlack.position()));
+		assertThat(bishopBlack.position(), is(expected));
 	}
 
 	@Test
@@ -25,7 +25,7 @@ public class BishopBlackTest {
 		BishopBlack bishopBlack = new BishopBlack(Cell.A1);
 		Figure figure = bishopBlack.copy(Cell.B3);
 		Cell expected = Cell.B3;
-		assertThat(expected, is(figure.position()));
+		assertThat(figure.position(), is(expected));
 	}
 
 	@Test
@@ -33,7 +33,7 @@ public class BishopBlackTest {
 		BishopBlack bishopBlack = new BishopBlack(Cell.C1);
 		Cell[] result = bishopBlack.way(Cell.G5);
 		Cell[] expected = {Cell.D2, Cell.E3, Cell.F4, Cell.G5};
-		assertThat(expected, is(result));
+		assertThat(result, is(expected));
 	}
 
 	@Test(expected = ImpossibleMoveException.class)
